@@ -1,8 +1,8 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { FirebaseService } from './modules/firebase/firebase.service';
-import { AuthGuard } from './global/guards/auth.guard';
+import { FirebaseService } from './firebase/firebase.service';
 import * as bodyParser from 'body-parser';
+import { AuthGuard } from './global/auth.guard';
 
 export async function registerGlobals(app: INestApplication) {
   app.useGlobalPipes(

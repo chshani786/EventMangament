@@ -12,8 +12,8 @@ export class UsersController {
 
   @BypassAuth()
   @Post()
-  async create(@Body() userDto: UserDto): Promise<ResponseDto<any>> {
-    const resp = await this.usersService.create(userDto);
+  async createUser(@Body() userDto: UserDto): Promise<ResponseDto<any>> {
+    const resp = await this.usersService.createUser(userDto);
     return {
       statusCode: HttpStatus.OK,
       message: 'User has been created',
@@ -22,8 +22,8 @@ export class UsersController {
   }
 
   @Get()
-  async findOne(@UserDecorator() user): Promise<ResponseDto<User>> {
-    const resp = await this.usersService.findOne(user.uid);
+  async findOne(): Promise<ResponseDto<User>> {
+    const resp = await this.usersService.getLoggedInUser();
     return new ResponseDto(HttpStatus.OK, 'User Found!', resp);
   }
 }
